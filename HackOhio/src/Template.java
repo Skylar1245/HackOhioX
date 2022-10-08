@@ -29,7 +29,6 @@ public final class Template {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        //test
 
         /*
          * Close input and output streams
