@@ -176,7 +176,16 @@ public final class Main {
                 pop++;
             }
         }
-        return (average / pop);
+        /*
+         * Catch case where there is no valid data
+         */
+        if (pop > 0) {
+            average /= pop;
+        } else {
+            average = 0.0;
+        }
+
+        return average;
     }
 
     /**
@@ -205,8 +214,11 @@ public final class Main {
         //String[][] nonDormMatrix = createMatrix(nonDormData);
         //String[][] weatherMatrix = createMatrix(weatherData);
 
-        out.println("Averaging " + dormMatrix[0][13] + ".");
-        out.println(getAverage(dormMatrix, 13));
+        for (int i = 0; i < dormMatrix[0].length; i++) {
+            out.println("Averaging " + dormMatrix[0][i] + ": "
+                    + String.format("%.2f", getAverage(dormMatrix, i)));
+            out.println();
+        }
         /*
          * Webpage stuff.
          */
@@ -216,6 +228,9 @@ public final class Main {
 
         createFooter(outputName);
 
+        /*
+         * time tracking
+         */
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
         out.println("Ran in: " + Math.floor(timeElapsed) + " seconds");
