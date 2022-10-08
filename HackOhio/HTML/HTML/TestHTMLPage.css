@@ -123,27 +123,6 @@ li {
     color: white;
   }
 
-  /*@keyframes graph-move {
-    0% {
-        background-color: #d0022b;
-        margin-left: 100%;
-        width: 80%;
-      }
-    
-    50% {
-        background-color: #d0022b;
-        margin-left: 8%;
-        width: 80%;
-      }
-
-    100% {
-        background-color: #d0022b;
-        margin-left: -100%;
-        margin-right: 100%;
-        width: 80%;
-      }      
-  }*/
-
   @keyframes graph-move {
     0% {
         background-color: #d0022b;
