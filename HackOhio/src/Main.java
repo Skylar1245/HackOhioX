@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import components.simplewriter.SimpleWriter;
@@ -57,6 +63,43 @@ public final class Main {
     }
 
     /**
+     * Gets data given a line.
+     *
+     * @param line
+     *            line with data
+     * @return correct List
+     */
+    public static List<String> getRecordFromLine(String line) {
+        List<String> values = new ArrayList<String>();
+        try (Scanner rowScanner = new Scanner(line)) {
+            rowScanner.useDelimiter(",");
+            while (rowScanner.hasNext()) {
+                values.add(rowScanner.next());
+            }
+        }
+        return values;
+    }
+
+    /**
+     * Creates a list based on a file.
+     *
+     * @param fileName
+     *            name of the file
+     * @return a list<list<string>>
+     */
+    public static List<List<String>> createDataList(String fileName) {
+        List<List<String>> records = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new File(fileName));) {
+            while (scanner.hasNextLine()) {
+                records.add(getRecordFromLine(scanner.nextLine()));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return records;
+    }
+
+    /**
      * Main method.
      *
      * @param args
@@ -66,12 +109,32 @@ public final class Main {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
 
-        String fileName = "data/test.html";
+        long start = System.currentTimeMillis();
+        /*
+         * Data reading stuff
+         */
+        String dormFile = "data/Dorm Buildings.csv";
+        String nonDormFile = "data/Non-Dorm Buildings.csv";
+        String weatherFile = "data/Weather Data.csv";
 
-        createHeader(fileName);
+        List<List<String>> dormData = createDataList(dormFile);
+        List<List<String>> nonDormData = createDataList(nonDormFile);
+        List<List<String>> weatherData = createDataList(weatherFile);
 
-        createFooter(fileName);
+        List<String> l = dormData.get(0);
+        Object[] a = l.toArray();
+        /*
+         * Webpage stuff.
+         */
+        String outputName = "data/test.html";
 
+        createHeader(outputName);
+
+        createFooter(outputName);
+
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        out.println(Math.floor(timeElapsed) + " milliseconds");
         /*
          * Close input and output streams
          */
