@@ -8,7 +8,7 @@ import components.simplewriter.SimpleWriter1L;
  *
  * @author Skylar Stephens
  * @author Kate Goertz
- * @author Manny Jareugui
+ * @author Manny Jauregui
  * @author Avery Doctor
  *
  */
@@ -21,42 +21,6 @@ public final class Template {
     }
 
     /**
-     * Creates generic unclosed HTML headers.
-     *
-     * @param fileName
-     *            name of the file output
-     */
-    public static void createHeader(String fileName) {
-        SimpleWriter out = new SimpleWriter1L(fileName);
-        /*
-         * Create generic HTML header
-         */
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Webpage</title>");
-        out.println("</head>");
-        out.println("<body>");
-
-        out.close();
-    }
-
-    /**
-     * Creates generic HTML footer.
-     *
-     * @param fileName
-     *            name of the output file
-     */
-    public static void createFooter(String fileName) {
-        SimpleWriter out = new SimpleWriter1L(fileName);
-        /*
-         * Create generic HTML footer
-         */
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
-    }
-
-    /**
      * Main method.
      *
      * @param args
@@ -65,6 +29,7 @@ public final class Template {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
+        //test
 
         /*
          * Close input and output streams
