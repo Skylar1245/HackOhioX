@@ -179,6 +179,29 @@ public final class Main {
     }
 
     /**
+     * Populates a Queue of String matrixs for data processing.
+     *
+     * @param files
+     *            Array containing file names
+     * @return a formatted Queue of String Matrixs
+     */
+    private static Queue<String[][]> populateMatrixQueue(String[] files) {
+        /*
+         * Set-up queue to contain dynamic file counts
+         */
+        Queue<String[][]> matrixQueue = new LinkedList<>();
+        /*
+         * Populate data queues with correct values
+         */
+        for (int i = 0; i < files.length; i++) {
+            String currentFile = files[i];
+            List<List<String>> tempList = createDataList(currentFile);
+            matrixQueue.add(createMatrix(tempList));
+        }
+        return matrixQueue;
+    }
+
+    /**
      * Main method.
      *
      * @param args
@@ -195,19 +218,10 @@ public final class Main {
         File dir = new File("data");
         String[] files = getFiles(dir);
         /*
-         * Set-up queues to contain dynamic file counts
+         * Set-up queues to contain dynamic file counts and populate
          */
-        Queue<List<List<String>>> dataQueue = new LinkedList<>();
-        Queue<String[][]> matrixQueue = new LinkedList<>();
-        /*
-         * Populate data queues with correct values
-         */
-        for (int i = 0; i < files.length; i++) {
-            String currentFile = files[i];
-            List<List<String>> tempList = createDataList(currentFile);
-            dataQueue.add(tempList);
-            matrixQueue.add(createMatrix(tempList));
-        }
+        Queue<String[][]> matrixQueue = populateMatrixQueue(files);
+
         /*
          * Prints the averages of all data sets
          */
