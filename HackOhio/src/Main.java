@@ -211,12 +211,24 @@ public final class Main {
         List<List<String>> weatherData = createDataList(weatherFile);
 
         String[][] dormMatrix = createMatrix(dormData);
-        //String[][] nonDormMatrix = createMatrix(nonDormData);
-        //String[][] weatherMatrix = createMatrix(weatherData);
+        String[][] nonDormMatrix = createMatrix(nonDormData);
+        String[][] weatherMatrix = createMatrix(weatherData);
 
-        for (int i = 0; i < dormMatrix[0].length; i++) {
+        for (int i = 1; i < dormMatrix[0].length; i++) {
             out.println("Average of " + dormMatrix[0][i] + ": "
                     + String.format("%.2f", getAverage(dormMatrix, i)));
+            out.println();
+        }
+
+        for (int i = 1; i < nonDormMatrix[0].length; i++) {
+            out.println("Average of " + nonDormMatrix[0][i] + ": "
+                    + String.format("%.2f", getAverage(nonDormMatrix, i)));
+            out.println();
+        }
+
+        for (int i = 1; i < weatherMatrix[0].length; i++) {
+            out.println("Average of " + weatherMatrix[0][i] + ": "
+                    + String.format("%.2f", getAverage(weatherMatrix, i)));
             out.println();
         }
 
