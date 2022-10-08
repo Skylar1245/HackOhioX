@@ -4,26 +4,20 @@ import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
 /**
- * Put a short phrase describing the program here.
+ * Main file for Energy Dashboard.
  *
- * @author Put your name here
+ * @author Skylar Stephens
+ * @author Kate Goertz
+ * @author Manny Jareugui
+ * @author Avery Doctor
  *
  */
-public final class ProgramWithIOAndStaticMethod {
+public final class Template {
 
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private ProgramWithIOAndStaticMethod() {
-    }
-
-    /**
-     * Put a short phrase describing the static method myMethod here.
-     */
-    private static void myMethod() {
-        /*
-         * Put your code for myMethod here
-         */
+    private Template() {
     }
 
     /**
@@ -35,10 +29,7 @@ public final class ProgramWithIOAndStaticMethod {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        /*
-         * Put your main program code here; it may call myMethod as shown
-         */
-        myMethod();
+
         /*
          * Close input and output streams
          */
