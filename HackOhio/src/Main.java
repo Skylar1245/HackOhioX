@@ -121,8 +121,8 @@ public final class Main {
         List<List<String>> nonDormData = createDataList(nonDormFile);
         List<List<String>> weatherData = createDataList(weatherFile);
 
-        List<String> l = dormData.get(0);
-        Object[] a = l.toArray();
+        List<String> dormNames = dormData.get(0);
+        Object[] a = dormNames.toArray();
         out.println(a[6]);
 
         /*
@@ -137,6 +137,9 @@ public final class Main {
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
         out.println(Math.floor(timeElapsed) + " milliseconds");
+
+        //this is up to date
+
         /*
          * Close input and output streams
          */
