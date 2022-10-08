@@ -88,44 +88,15 @@ public final class Main {
      * @return a list<list<string>>
      */
     public static List<List<String>> createDataList(String fileName) {
-        SimpleWriter out = new SimpleWriter1L();
         List<List<String>> records = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(fileName));) {
-            int i = 0, total = 50515;
             while (scanner.hasNextLine()) {
                 records.add(getRecordFromLine(scanner.nextLine()));
-                out.println("Compiling " + fileName + "... (" + i + "/" + total
-                        + ")");
-                i++;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        out.println("Done!");
-        out.close();
         return records;
-    }
-
-    /**
-     * .
-     *
-     * @param l
-     *            .
-     * @return .
-     */
-    public static String[] createArray(List<List<String>> l) {
-        SimpleWriter out = new SimpleWriter1L();
-        String[] columns = new String[l.size()];
-
-        for (List<String> subL : l) {
-            int i = 0;
-            for (String str : subL) {
-                out.println(str);
-                columns[i] += str + ",";
-                i++;
-            }
-        }
-        return columns;
     }
 
     /**
@@ -150,8 +121,6 @@ public final class Main {
         //List<List<String>> nonDormData = createDataList(nonDormFile);
         //List<List<String>> weatherData = createDataList(weatherFile);
 
-        String[] a = createArray(dormData);
-        out.println(a[1]);
         /*
          * Webpage stuff.
          */
@@ -163,10 +132,7 @@ public final class Main {
 
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
-        out.println(Math.floor(timeElapsed / 1000) + " seconds");
-
-        //this is up to date
-
+        //out.println(Math.floor(timeElapsed) + " seconds");
         /*
          * Close input and output streams
          */
