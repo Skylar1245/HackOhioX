@@ -123,6 +123,8 @@ public final class Main {
 
         List<String> l = dormData.get(0);
         Object[] a = l.toArray();
+        out.println(a[6]);
+
         /*
          * Webpage stuff.
          */
