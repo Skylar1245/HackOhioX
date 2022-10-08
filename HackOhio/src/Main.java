@@ -219,6 +219,7 @@ public final class Main {
                     + String.format("%.2f", getAverage(dormMatrix, i)));
             out.println();
         }
+
         /*
          * Webpage stuff.
          */
