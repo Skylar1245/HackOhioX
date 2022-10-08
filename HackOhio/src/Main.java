@@ -12,12 +12,12 @@ import components.simplewriter.SimpleWriter1L;
  * @author Avery Doctor
  *
  */
-public final class Template {
+public final class Main {
 
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private Template() {
+    private Main() {
     }
 
     /**
