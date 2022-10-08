@@ -74,14 +74,14 @@ public final class Main {
          * Try to open a scanner based on the current line, if you can add all
          * data seperated by commas to a list of strings
          */
-        List<String> values = new ArrayList<String>();
+        List<String> data = new ArrayList<String>();
         try (Scanner rowScanner = new Scanner(line)) {
             rowScanner.useDelimiter(",");
             while (rowScanner.hasNext()) {
-                values.add(rowScanner.next());
+                data.add(rowScanner.next());
             }
         }
-        return values;
+        return data;
     }
 
     /**
@@ -96,15 +96,15 @@ public final class Main {
          * Try to make a scanner of the filename, if you can add the data from
          * the line to the list through getREcordFromLine
          */
-        List<List<String>> records = new ArrayList<>();
+        List<List<String>> dataList = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(fileName));) {
             while (scanner.hasNextLine()) {
-                records.add(getDataFromLine(scanner.nextLine()));
+                dataList.add(getDataFromLine(scanner.nextLine()));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return records;
+        return dataList;
     }
 
     /**
@@ -165,7 +165,7 @@ public final class Main {
          * Initial values
          */
         double average = 0.0;
-        double pop = 0.0;
+        double elementCount = 0.0;
         /*
          * for all values in the matrix, if they are valid numbers at to average
          * can count the data population
@@ -173,14 +173,14 @@ public final class Main {
         for (int i = 0; i < matrix.length; i++) {
             if (canParseToDouble(matrix[i][pos])) {
                 average += Double.parseDouble(matrix[i][pos]);
-                pop++;
+                elementCount++;
             }
         }
         /*
          * Catch case where there is no valid data
          */
-        if (pop > 0) {
-            average /= pop;
+        if (elementCount > 0) {
+            average /= elementCount;
         } else {
             average = 0.0;
         }
@@ -215,7 +215,7 @@ public final class Main {
         //String[][] weatherMatrix = createMatrix(weatherData);
 
         for (int i = 0; i < dormMatrix[0].length; i++) {
-            out.println("Averaging " + dormMatrix[0][i] + ": "
+            out.println("Average of " + dormMatrix[0][i] + ": "
                     + String.format("%.2f", getAverage(dormMatrix, i)));
             out.println();
         }
