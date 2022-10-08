@@ -1,11 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import components.simplereader.SimpleReader;
-import components.simplereader.SimpleReader1L;
+import components.queue.Queue;
+import components.queue.Queue1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
@@ -24,42 +25,6 @@ public final class Main {
      * Private constructor so this utility class cannot be instantiated.
      */
     private Main() {
-    }
-
-    /**
-     * Creates generic unclosed HTML headers.
-     *
-     * @param fileName
-     *            name of the file output
-     */
-    public static void createHeader(String fileName) {
-        SimpleWriter out = new SimpleWriter1L(fileName);
-        /*
-         * Create generic HTML header
-         */
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Webpage</title>");
-        out.println("</head>");
-        out.println("<body>");
-
-        out.close();
-    }
-
-    /**
-     * Creates generic HTML footer.
-     *
-     * @param fileName
-     *            name of the output file
-     */
-    public static void createFooter(String fileName) {
-        SimpleWriter out = new SimpleWriter1L(fileName);
-        /*
-         * Create generic HTML footer
-         */
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
     }
 
     /**
@@ -189,57 +154,75 @@ public final class Main {
     }
 
     /**
+     * Gets all files in provided directory.
+     *
+     * @param directory
+     *            dir to search
+     * @return array of valid files @
+     */
+    public static String[] getFiles(File directory) {
+        /*
+         * Creates an array of files based upon an implementation of javas
+         * FilenameFilter that checks if the file name ends in .csv
+         */
+        File[] names = directory.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File directory, String name) {
+                return name.endsWith(".csv");
+            }
+        });
+        /*
+         * Convert the file array into an array of the file paths as strings
+         */
+        String[] strNames = new String[names.length];
+        for (int i = 0; i < names.length; i++) {
+            strNames[i] = names[i].toString();
+        }
+        return strNames;
+    }
+
+    /**
      * Main method.
      *
      * @param args
      *            the command line arguments
      */
     public static void main(String[] args) {
-        SimpleReader in = new SimpleReader1L();
+        /*
+         * System writer and time tracker
+         */
         SimpleWriter out = new SimpleWriter1L();
-
         long start = System.currentTimeMillis();
         /*
-         * Data reading stuff
+         * Based on provided directory name, gets all valid csv file names
          */
-        String dormFile = "data/Dorm Buildings.csv";
-        String nonDormFile = "data/Non-Dorm Buildings.csv";
-        String weatherFile = "data/Weather Data.csv";
-
-        List<List<String>> dormData = createDataList(dormFile);
-        List<List<String>> nonDormData = createDataList(nonDormFile);
-        List<List<String>> weatherData = createDataList(weatherFile);
-
-        String[][] dormMatrix = createMatrix(dormData);
-        String[][] nonDormMatrix = createMatrix(nonDormData);
-        String[][] weatherMatrix = createMatrix(weatherData);
-
-        for (int i = 1; i < dormMatrix[0].length; i++) {
-            out.println("Average of " + dormMatrix[0][i] + ": "
-                    + String.format("%.2f", getAverage(dormMatrix, i)));
-            out.println();
-        }
-
-        for (int i = 1; i < nonDormMatrix[0].length; i++) {
-            out.println("Average of " + nonDormMatrix[0][i] + ": "
-                    + String.format("%.2f", getAverage(nonDormMatrix, i)));
-            out.println();
-        }
-
-        for (int i = 1; i < weatherMatrix[0].length; i++) {
-            out.println("Average of " + weatherMatrix[0][i] + ": "
-                    + String.format("%.2f", getAverage(weatherMatrix, i)));
-            out.println();
-        }
-
+        File dir = new File("data");
+        String[] files = getFiles(dir);
         /*
-         * Webpage stuff.
+         * Set-up queues to contain dynamic file counts
          */
-        String outputName = "data/test.html";
+        Queue<List<List<String>>> dataQueue = new Queue1L<>();
+        Queue<String[][]> matrixQueue = new Queue1L<>();
+        /*
+         * Populate data queues with correct values
+         */
+        for (int i = 0; i < files.length; i++) {
+            String currentFile = files[i];
+            List<List<String>> tempList = createDataList(currentFile);
+            dataQueue.enqueue(tempList);
+            matrixQueue.enqueue(createMatrix(tempList));
+        }
+        /*
+         * Prints the averages of all data sets
+         */
+        for (String[][] matrix : matrixQueue) {
 
-        createHeader(outputName);
-
-        createFooter(outputName);
+            for (int i = 1; i < matrix[0].length; i++) {
+                out.println("Average of " + matrix[0][i] + ": "
+                        + String.format("%.2f", getAverage(matrix, i)));
+                out.println();
+            }
+        }
 
         /*
          * time tracking
@@ -247,11 +230,7 @@ public final class Main {
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
         out.println("Ran in: " + Math.floor(timeElapsed) + " seconds");
-        /*
-         * Close input and output streams
-         */
 
-        in.close();
         out.close();
     }
 
