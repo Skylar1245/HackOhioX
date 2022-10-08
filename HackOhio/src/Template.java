@@ -8,7 +8,7 @@ import components.simplewriter.SimpleWriter1L;
  *
  * @author Skylar Stephens
  * @author Kate Goertz
- * @author Manny Jareugui
+ * @author Manny Jauregui
  * @author Avery Doctor
  *
  */
@@ -31,9 +31,6 @@ public final class Template {
         SimpleWriter out = new SimpleWriter1L();
         //test
 
-        
-        
-        
         /*
          * Close input and output streams
          */
