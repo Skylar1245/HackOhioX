@@ -21,6 +21,42 @@ public final class Template {
     }
 
     /**
+     * Creates generic unclosed HTML headers.
+     *
+     * @param fileName
+     *            name of the file output
+     */
+    public static void createHeader(String fileName) {
+        SimpleWriter out = new SimpleWriter1L(fileName);
+        /*
+         * Create generic HTML header
+         */
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Webpage</title>");
+        out.println("</head>");
+        out.println("<body>");
+
+        out.close();
+    }
+
+    /**
+     * Creates generic HTML footer.
+     *
+     * @param fileName
+     *            name of the output file
+     */
+    public static void createFooter(String fileName) {
+        SimpleWriter out = new SimpleWriter1L(fileName);
+        /*
+         * Create generic HTML footer
+         */
+        out.println("</body>");
+        out.println("</html>");
+        out.close();
+    }
+
+    /**
      * Main method.
      *
      * @param args
@@ -29,7 +65,12 @@ public final class Template {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        //test
+
+        String fileName = "data/test.html";
+
+        createHeader(fileName);
+
+        createFooter(fileName);
 
         /*
          * Close input and output streams
