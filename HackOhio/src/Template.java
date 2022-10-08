@@ -65,7 +65,12 @@ public final class Template {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        //test
+
+        String fileName = "data/test.html";
+
+        createHeader(fileName);
+
+        createFooter(fileName);
 
         /*
          * Close input and output streams
