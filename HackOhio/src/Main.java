@@ -2,13 +2,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
-
-import components.queue.Queue;
-import components.queue.Queue1L;
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
 
 /**
  * Main file for Energy Dashboard.
@@ -34,7 +31,7 @@ public final class Main {
      *            line with data
      * @return correct List
      */
-    public static List<String> getDataFromLine(String line) {
+    private static List<String> getDataFromLine(String line) {
         /*
          * Try to open a scanner based on the current line, if you can add all
          * data seperated by commas to a list of strings
@@ -56,7 +53,7 @@ public final class Main {
      *            name of the file
      * @return a list<list<string>>
      */
-    public static List<List<String>> createDataList(String fileName) {
+    private static List<List<String>> createDataList(String fileName) {
         /*
          * Try to make a scanner of the filename, if you can add the data from
          * the line to the list through getREcordFromLine
@@ -79,7 +76,7 @@ public final class Main {
      *            a List<List<String>>
      * @return a String[][]
      */
-    public static String[][] createMatrix(List<List<String>> l) {
+    private static String[][] createMatrix(List<List<String>> l) {
         /*
          * for all list elements add a String[] based on the contents
          */
@@ -103,7 +100,7 @@ public final class Main {
      *            String to be checked
      * @return true or false
      */
-    public static boolean canParseToDouble(String s) {
+    private static boolean canParseToDouble(String s) {
         /**
          * Check if s can be parsed into a double
          */
@@ -125,7 +122,7 @@ public final class Main {
      *            small matrix pos
      * @return the average of the line
      */
-    public static double getAverage(String[][] matrix, int pos) {
+    private static double getAverage(String[][] matrix, int pos) {
         /*
          * Initial values
          */
@@ -160,7 +157,7 @@ public final class Main {
      *            dir to search
      * @return array of valid files @
      */
-    public static String[] getFiles(File directory) {
+    private static String[] getFiles(File directory) {
         /*
          * Creates an array of files based upon an implementation of javas
          * FilenameFilter that checks if the file name ends in .csv
@@ -189,9 +186,8 @@ public final class Main {
      */
     public static void main(String[] args) {
         /*
-         * System writer and time tracker
+         * Time tracker
          */
-        SimpleWriter out = new SimpleWriter1L();
         long start = System.currentTimeMillis();
         /*
          * Based on provided directory name, gets all valid csv file names
@@ -201,16 +197,16 @@ public final class Main {
         /*
          * Set-up queues to contain dynamic file counts
          */
-        Queue<List<List<String>>> dataQueue = new Queue1L<>();
-        Queue<String[][]> matrixQueue = new Queue1L<>();
+        Queue<List<List<String>>> dataQueue = new LinkedList<>();
+        Queue<String[][]> matrixQueue = new LinkedList<>();
         /*
          * Populate data queues with correct values
          */
         for (int i = 0; i < files.length; i++) {
             String currentFile = files[i];
             List<List<String>> tempList = createDataList(currentFile);
-            dataQueue.enqueue(tempList);
-            matrixQueue.enqueue(createMatrix(tempList));
+            dataQueue.add(tempList);
+            matrixQueue.add(createMatrix(tempList));
         }
         /*
          * Prints the averages of all data sets
@@ -218,20 +214,16 @@ public final class Main {
         for (String[][] matrix : matrixQueue) {
 
             for (int i = 1; i < matrix[0].length; i++) {
-                out.println("Average of " + matrix[0][i] + ": "
+                System.out.println("Average of " + matrix[0][i] + ": "
                         + String.format("%.2f", getAverage(matrix, i)));
-                out.println();
+                System.out.println();
             }
         }
-
         /*
          * time tracking
          */
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
-        out.println("Ran in: " + Math.floor(timeElapsed) + " seconds");
-
-        out.close();
+        System.out.println("Ran in: " + Math.floor(timeElapsed) + " seconds");
     }
-
 }
