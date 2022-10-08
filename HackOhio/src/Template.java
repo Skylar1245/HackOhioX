@@ -31,9 +31,6 @@ public final class Template {
         SimpleWriter out = new SimpleWriter1L();
         //test
 
-        
-        
-        
         /*
          * Close input and output streams
          */
