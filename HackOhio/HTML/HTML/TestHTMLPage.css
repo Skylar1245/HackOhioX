@@ -38,6 +38,7 @@
     border-radius: 30;
     margin-top: -20px;
     padding: 10px;
+    text-align: center;
 }
 
 .scroll {
@@ -57,14 +58,17 @@
 
 .graphs {
     height: 80%;
-    margin: auto;
-    animation-duration: 5s;
+    margin: auto, 10%;
+    margin-top: -5px;
+    animation-duration: 7s;
     animation-name: graph-move;
     animation-iteration-count: infinite;
 }
 
-.graphs img {
-    max-width: fit-content;
+img {
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -119,7 +123,7 @@ li {
     color: white;
   }
 
-  @keyframes graph-move {
+  /*@keyframes graph-move {
     0% {
         background-color: #d0022b;
         margin-left: 100%;
@@ -137,16 +141,37 @@ li {
         margin-left: -100%;
         margin-right: 100%;
         width: 80%;
+      }      
+  }*/
+
+  @keyframes graph-move {
+    0% {
+        background-color: #d0022b;
+        margin-left: 100%;
+        width: 90%;
+      }
+    
+    15%, 85% {
+        background-color: #d0022b;
+        margin-left: 5%;
+        width: 90%;
       }
 
-      
+    100% {
+        background-color: #d0022b;
+        margin-left: -100%;
+        margin-right: 100%;
+        width: 90%;
+      }      
   }
+
+  .graphs:hover {animation-play-state: paused;}
 
   /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
   /* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
   @keyframes tickerh {
     0% { transform: translate3d(100%, 0, 0); }
-    100% { transform: translate3d(-400%, 0, 0); }
+    100% { transform: translate3d(-500%, 0, 0); }
   }
   .hmove { animation: tickerh linear 25s infinite; }
   .hmove:hover { animation-play-state: paused; }
