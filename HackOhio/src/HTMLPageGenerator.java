@@ -262,7 +262,7 @@ public final class HTMLPageGenerator {
 
         out.print("//changes the image on the scroll block");
         out.print("\nfunction displayNextImage() {");
-        out.print("\n\t//check which image is currently displayed")
+        out.print("\n\t//check which image is currently displayed");
         out.print("\n\tif(document.getElementById('img').src =='" + graph1
                 + "') {");
         out.print(
@@ -276,7 +276,8 @@ public final class HTMLPageGenerator {
                 "\n\t\tdocument.getElementById('img').src = '" + graph1 + "';");
         out.print("\n\t}");
         out.print("\n}\n");
-        out.print("\n//gets an array of all the elements within the class of graphs");
+        out.print(
+                "\n//gets an array of all the elements within the class of graphs");
         out.println("\n\nmovingblock = document.getElementsByClass"
                 + "Name('graphs');\n\n//waits until the animation has finished an iteration to switch the image\nmovingblock[0].addEventListener(\"anim"
                 + "ationiteration\", displayNextImage);");
