@@ -161,7 +161,8 @@ public final class HTMLPageGenerator {
                 + "    max-height: 100%;\r\n" + "    overflow: hidden;\r\n"
                 + "}");
         out.println("\nbody {\r\n" + "    font-family: BuckeyeSans;\r\n"
-                + "    background-color: black;\r\n" + "    width: 100%;\r\n"
+                + "    background-color: black;\r\n"
+                + "    overflow: hidden;\r\n" + "    width: 100%;\r\n"
                 + "    aspect-ratio: 16 / 9;\r\n" + "    margin: 0;\r\n"
                 + "    padding: 0;\r\n" + "}");
         out.println("\nheader {\r\n" + "    font-weight: bolder;\r\n"

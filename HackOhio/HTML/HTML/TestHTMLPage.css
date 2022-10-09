@@ -76,6 +76,7 @@ img {
 body {
     font-family: BuckeyeSans;
     background-color: black;
+    overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 9;
     margin: 0;
