@@ -83,6 +83,10 @@ public final class HTMLPageGenerator {
 
         out.println("\t\t\t\t</ul>");
         out.println("\t\t\t</div>");
+        out.println("\t\t\t<div class=\"footnote\">");
+        out.println("\t\t\t\t<p>(1 GW = 1E10 W)</p>");
+        out.println("\t\t\t\t<p>(1MW = 1E6 W)</p>");
+        out.println("\t\t\t</div>");
         out.println("\t\t</div>");
         out.println("\t</div>");
         out.println("\t<div class=\"scroll\">");
@@ -137,10 +141,14 @@ public final class HTMLPageGenerator {
                 + "    width: 100%;\r\n" + "    height: 80%;\r\n"
                 + "    margin: 0;  \r\n" + "    margin-top: -20px;\r\n" + "}");
         out.println("\n.facts {\r\n" + "    background-color: #ffffff;\r\n"
-                + "    width: 60%;\r\n" + "    height: auto;\r\n"
-                + "    padding: 20px;\r\n" + "}");
+                + "    width: 40%;\r\n" + "    height: auto;\r\n"
+                + "    padding: 20px;    \r\n" + "}");
+        out.println("\n.footnote {\r\n" + "    text-align: center;\r\n" + "}");
+        out.println("\n.footnote p {\r\n" + "    display: inline-block;\r\n"
+                + "    color: #d0022b;\r\n" + "    text-align: center;\r\n"
+                + "    font-style: italic;\r\n" + "}");
         out.println("\n.graph {\r\n" + "    background-color: #eff1f2;\r\n"
-                + "    width: 40%;\r\n" + "    height: auto;\r\n" + "}");
+                + "    width: 60%;\r\n" + "    height: auto;\r\n" + "}");
         out.println("\n.graph h1 {\r\n" + "    background-color:#646a6e;\r\n"
                 + "    border-radius: 30;\r\n" + "    color: white;\r\n"
                 + "    margin-top: 0px;\r\n" + "    padding: 10px;\r\n" + "}");
@@ -176,7 +184,7 @@ public final class HTMLPageGenerator {
                 + "}");
         out.println("\nli {\r\n" + "    font-size: 40px;\r\n"
                 + "    color: #d0022b;\r\n" + "    list-style-type: square;\r\n"
-                + "}");
+                + "    margin-bottom: 4%;\r\n" + "}");
         out.println("\n/* (A) FIXED WRAPPER */\r\n" + ".hwrap {\r\n"
                 + "    overflow: hidden; /* HIDE SCROLL BAR */\r\n" + "  }");
         out.println("\n  /* (B) MOVING TICKER WRAPPER */\r\n"
