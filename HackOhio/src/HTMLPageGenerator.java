@@ -129,10 +129,11 @@ public final class HTMLPageGenerator {
         SimpleWriter out = new SimpleWriter1L(fileName + ".css");
 
         out.println(".title {\r\n" + "    font-size: 60px;\r\n"
-                + "    margin: 0 auto;\r\n" + "}");
+                + "    margin-bottom: 0;\r\n" + "    padding-top: 12px;\r\n"
+                + "    padding-bottom: 0%;\r\n" + "}");
         out.println("\n.info {\r\n" + "    display: inline-flex;\r\n"
                 + "    flex-direction: row;\r\n" + "    overflow: hidden;\r\n"
-                + "    width: 100%;\r\n" + "    height: 75%;\r\n"
+                + "    width: 100%;\r\n" + "    height: 80%;\r\n"
                 + "    margin: 0;  \r\n" + "    margin-top: -20px;\r\n" + "}");
         out.println("\n.facts {\r\n" + "    background-color: #ffffff;\r\n"
                 + "    width: 60%;\r\n" + "    height: auto;\r\n"
@@ -164,7 +165,7 @@ public final class HTMLPageGenerator {
                 + "    aspect-ratio: 16 / 9;\r\n" + "    margin: 0;\r\n"
                 + "    padding: 0;\r\n" + "}");
         out.println("\nheader {\r\n" + "    font-weight: bolder;\r\n"
-                + "    width: 100%;\r\n" + "    height: 12%;\r\n"
+                + "    width: 100%;\r\n" + "    height: 15%;\r\n"
                 + "    background-color:  #dfe3e5;\r\n"
                 + "    margin: 15px auto;\r\n" + "    padding-bottom: 10px;\r\n"
                 + "}");
