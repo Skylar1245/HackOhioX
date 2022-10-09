@@ -281,13 +281,12 @@ public final class HTMLPageGenerator {
          * Strings for the dorm based page.
          */
         fileName = "HTML/KnowltonHall";
-        graph1URL = "https://raw.githubusercontent.com/Skylar1245/"
-                + "HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/"
-                + "HackOhio/graphs/BuschPlotPerPerson.png";
-        graph2URL = "https://raw.githubusercontent.com/Skylar1245/"
-                + "HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
-        graph3URL = "https://raw.githubusercontent.com/Skylar1245/"
-                + "HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
+        graph1URL = "https://raw.githubusercontent.com/Skylar1245/Hack"
+                + "OhioX/master/HackOhio/graphs/KnowltonPlotAnnual.png";
+        graph2URL = "https://raw.githubusercontent.com/Skylar1245/Hack"
+                + "OhioX/master/HackOhio/graphs/KnowltonPlotCategories.png";
+        graph3URL = "https://raw.githubusercontent.com/Skylar1245/Hack"
+                + "OhioX/master/HackOhio/graphs/KnowltonPlotPerPerson.png";
         /*
          * Bridge over Data.java to be used here.
          */
