@@ -22,7 +22,7 @@ public final class HTMLPageGenerator {
      */
     private static void pageMaker(String fileName, String graph1, int dormRank,
             double efficiancy) {
-        SimpleWriter out = new SimpleWriter1L(fileName + ".css");
+        SimpleWriter out = new SimpleWriter1L(fileName + ".html");
         out.println("<html lang=\"en\">");
         out.println("<head>");
         out.println("\t<meta charset=\"UTF-8\">");
