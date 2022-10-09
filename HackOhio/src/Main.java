@@ -10,7 +10,8 @@ import java.util.Scanner;
 /**
  * Works with HTML files and MATLAB graph outputs to read any amount of files
  * within a given folder. Assumes that the files are [NAME].csv and is exported
- * through excels save as .csv with comma delimiter. (No cells include a comma)
+ * through excels save as .csv with delimiter matching the
+ * {@code String: delimiter} (No cells include a comma)
  *
  * @author Skylar Stephens
  * @author Kate Goertz
@@ -26,6 +27,15 @@ public final class Main {
     }
 
     /**
+     * Points to folder that contains proper .csv files.
+     */
+    private static String folderName = "Data";
+    /**
+     * The chosen delimiter string in the .csv files.
+     */
+    private static String delimiter = ",";
+
+    /**
      * Gets data given a line.
      *
      * @param line
@@ -39,7 +49,7 @@ public final class Main {
          */
         List<String> data = new ArrayList<String>();
         try (Scanner rowScanner = new Scanner(line)) {
-            rowScanner.useDelimiter(",");
+            rowScanner.useDelimiter(delimiter);
             while (rowScanner.hasNext()) {
                 data.add(rowScanner.next());
             }
@@ -212,7 +222,7 @@ public final class Main {
         /*
          * Based on provided directory name, gets all valid csv file names
          */
-        File dir = new File("data");
+        File dir = new File(folderName);
         String[] files = getFiles(dir);
         /*
          * Set-up queues to contain dynamic file counts and populate
