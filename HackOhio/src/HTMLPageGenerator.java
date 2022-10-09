@@ -127,8 +127,84 @@ public final class HTMLPageGenerator {
 
     private static void cssPageMaker(String fileName) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".css");
-        out.println(
-                "\n.title {\n\tfont-size: 60px;\n\tmargin: 0 auto;\n}\n\n.info {\n\tdisplay: inline-flex;\n\tflex-direction: row;\n\toverflow: hidden;\n\twidth: 100%;\n\theight: 75%;\n\tmargin: 0;\n}\n\n.facts {\n\tbackground-color: #ffffff;\n\twidth: 60%;\n\theight: auto;\n\tpadding: 20px;\n}\n\n.graph {\n\tbackground-color: #eff1f2;\n\twidth: 40%;\n\theight: auto;\n}\n\n.graph h1 {\n\tbackground-color:#646a6e;\n\tborder-radius: 30;\n\tcolor: white;\n\tmargin-top: 0px;\n\tpadding: 10px;\n}\n\n.facts h1 {\n\tborder-radius: 30;\n\tmargin-top: -20px;\n\tpadding: 10px;\n\ttext-align: center;\n}\n\n.scroll {\n\twidth: 100%;\n\theight: 5%;\n\tdisplay: flexbox;\n\talign-items: center;\n\toverflow: hidden;\n\tbackground-color: #d0022b;\n}\n\n.subtitle {\n\ttext-align: center;\n\tfont-size: 20;\n\tmargin-top: -5px;\n}\n\n.graphs {\n\theight: 80%;\n\tmargin: auto, 10%;\n\tmargin-top: -5px;\n\tanimation-duration: 7s;\n\tanimation-name: graph-move;\n\tanimation-iteration-count: infinite;\n}\n\nimg {\n\twidth: 100%;\n\tmax-height: 100%;\n\toverflow: hidden;\n}\n\nbody{\n\tfont-family: BuckeyeSans;\n\tbackground-color: black;\n\twidth: 100%;\n\taspect-ratio: 16 / 9;\n\tmargin: 0;\n\tpadding: 0;\n}\n\nheader {\n\tfont-weight: bolder;\n\twidth: 100%;\n\theight: 12%;\n\tbackground-color:  #dfe3e5;\n\tmargin: 15px auto;\n\tpadding-bottom: 10px;\n}\n\nh1 {\n\tfont-size: 50px;\n\tfont-weight: 600;\n\ttext-align: center;\n}\n\nli {\n\tfont-size: 40px;\n\tcolor: #d0022b;\n\tlist-style-type: square;\n}\n\n/* (A) FIXED WRAPPER */\n.hwrap {\n\toverflow: hidden; /* HIDE SCROLL BAR */\n}\n\n/* (B) MOVING TICKER WRAPPER */\n\t.hmove {\n\tdisplay: flex;\n}\n\n/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */\n.hitem {\n\tflex-shrink: 0;\n\twidth: 100%;\n\t box-sizing: border-box;\n\tpadding: 10px;\n\tmargin: auto;\n\ttext-align: center;\n\tfont-size: 25;\n\tcolor: white;\n}\n\n @keyframes graph-move {\n\t0% {\n\t\tbackground-color: #d0022b;\n\t\tmargin-left: 100%;\n\t\twidth: 90%;\n\t}\n\n\t15%, 85% {\n\t\tbackground-color: #d0022b;\n\t\tmargin-left: 5%;\n\t\twidth: 90%;\n\t}\n\n\t100% {\n\t\tbackground-color: #d0022b;\n\t\tmargin-left: -100%;\n\t\tmargin-right: 100%;\n\t\twidth: 90%;\n\t}\n}\n\n.graphs:hover {animation-play-state:paused;}\n\n/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */\n/* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */\n @keyframes tickerh\n{\n\t0%{transform:translate3d(100%,0,0);}\n\t100%{transform:translate3d(-500%,0,0);}\n\n}\n.hmove\n{animation:tickerh linear 25 s infinite;\n}\n.hmove:hover\n{\n\t\tanimation-play-state:paused;\n}");
+
+        out.println(".title {\r\n" + "    font-size: 60px;\r\n"
+                + "    margin: 0 auto;\r\n" + "}");
+        out.println("\n.info {\r\n" + "    display: inline-flex;\r\n"
+                + "    flex-direction: row;\r\n" + "    overflow: hidden;\r\n"
+                + "    width: 100%;\r\n" + "    height: 75%;\r\n"
+                + "    margin: 0;  \r\n" + "    margin-top: -20px;\r\n" + "}");
+        out.println("\n.facts {\r\n" + "    background-color: #ffffff;\r\n"
+                + "    width: 60%;\r\n" + "    height: auto;\r\n"
+                + "    padding: 20px;\r\n" + "}");
+        out.println("\n.graph {\r\n" + "    background-color: #eff1f2;\r\n"
+                + "    width: 40%;\r\n" + "    height: auto;\r\n" + "}");
+        out.println("\n.graph h1 {\r\n" + "    background-color:#646a6e;\r\n"
+                + "    border-radius: 30;\r\n" + "    color: white;\r\n"
+                + "    margin-top: 0px;\r\n" + "    padding: 10px;\r\n" + "}");
+        out.println("\n.facts h1 {\r\n" + "    border-radius: 30;\r\n"
+                + "    margin-top: -20px;\r\n" + "    padding: 10px;\r\n"
+                + "    text-align: center;\r\n" + "}");
+        out.println("\n.scroll {\r\n" + "    width: 100%;\r\n"
+                + "    height: 5%;\r\n" + "    display: flexbox;\r\n"
+                + "    align-items: center;\r\n" + "    overflow: hidden;\r\n"
+                + "    background-color: #d0022b;\r\n" + "}");
+        out.println("\n.subtitle {\r\n" + "    text-align: center;\r\n"
+                + "    font-size: 20;\r\n" + "    margin-top: -5px;\r\n" + "}");
+        out.println("\n.graphs {\r\n" + "    height: 80%;\r\n"
+                + "    margin: auto, 10%;\r\n" + "    margin-top: -5px;\r\n"
+                + "    animation-duration: 7s;\r\n"
+                + "    animation-name: graph-move;\r\n"
+                + "    animation-iteration-count: infinite;\r\n" + "}");
+        out.println("\nimg {\r\n" + "    width: 100%;\r\n"
+                + "    max-height: 100%;\r\n" + "    overflow: hidden;\r\n"
+                + "}");
+        out.println("\nbody {\r\n" + "    font-family: BuckeyeSans;\r\n"
+                + "    background-color: black;\r\n" + "    width: 100%;\r\n"
+                + "    aspect-ratio: 16 / 9;\r\n" + "    margin: 0;\r\n"
+                + "    padding: 0;\r\n" + "}");
+        out.println("\nheader {\r\n" + "    font-weight: bolder;\r\n"
+                + "    width: 100%;\r\n" + "    height: 12%;\r\n"
+                + "    background-color:  #dfe3e5;\r\n"
+                + "    margin: 15px auto;\r\n" + "    padding-bottom: 10px;\r\n"
+                + "}");
+        out.println("\nh1 {\r\n" + "    font-size: 50px;\r\n"
+                + "    font-weight: 600;\r\n" + "    text-align: center;\r\n"
+                + "}");
+        out.println("\nli {\r\n" + "    font-size: 40px;\r\n"
+                + "    color: #d0022b;\r\n" + "    list-style-type: square;\r\n"
+                + "}");
+        out.println("\n/* (A) FIXED WRAPPER */\r\n" + ".hwrap {\r\n"
+                + "    overflow: hidden; /* HIDE SCROLL BAR */\r\n" + "  }");
+        out.println("\n  /* (B) MOVING TICKER WRAPPER */\r\n"
+                + "  .hmove { \r\n" + "    display: flex; \r\n" + "}");
+        out.println("\n/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */\r\n"
+                + "  .hitem {\r\n" + "    flex-shrink: 0;\r\n"
+                + "    width: 100%;\r\n" + "    box-sizing: border-box;\r\n"
+                + "    padding: 10px;\r\n" + "    margin: auto;\r\n"
+                + "    text-align: center;\r\n" + "    font-size: 25;\r\n"
+                + "    color: white;\r\n" + "  }");
+        out.println("\n@keyframes graph-move {\r\n" + "    0% {\r\n"
+                + "        background-color: #d0022b;\r\n"
+                + "        margin-left: 100%;\r\n" + "        width: 90%;\r\n"
+                + "      }\r\n" + "    \r\n" + "    15%, 85% {\r\n"
+                + "        background-color: #d0022b;\r\n"
+                + "        margin-left: 5%;\r\n" + "        width: 90%;\r\n"
+                + "      }\r\n" + "\r\n" + "    100% {\r\n"
+                + "        background-color: #d0022b;\r\n"
+                + "        margin-left: -100%;\r\n"
+                + "        margin-right: 100%;\r\n" + "        width: 90%;\r\n"
+                + "      }      \r\n" + "  }");
+        out.println("\n.graphs:hover {animation-play-state: paused;}");
+        out.println("\n/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */\r\n"
+                + "  /* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */\r\n"
+                + "  @keyframes tickerh {\r\n"
+                + "    0% { transform: translate3d(100%, 0, 0); }\r\n"
+                + "    100% { transform: translate3d(-500%, 0, 0); }\r\n"
+                + "  }");
+        out.println("\n.hmove { animation: tickerh linear 25s infinite; }");
+        out.println("\n.hmove:hover { animation-play-state: paused; }");
+        out.println("\n");
 
         out.close();
     }
