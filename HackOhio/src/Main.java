@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -213,6 +214,65 @@ public final class Main {
     }
 
     /**
+     * Gets the matrix position of the passed building name.
+     *
+     * @param matrix
+     *            Matrix containing all data
+     * @param buildingName
+     *            Name of building to find position of
+     * @return the int position of building name
+     */
+    private static int findPos(String[][] matrix, String buildingName) {
+        int pos = 0;
+        /*
+         * Search the top column for buildingName, if found save it.
+         */
+        for (int i = 0; i < matrix[0].length; i++) {
+            if (matrix[0][i].equals(buildingName)) {
+                pos = i;
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * Find the closest average match to the passed building name.
+     *
+     * @param matrix
+     *            Matrix with all data
+     * @param buildingName
+     *            Name of building to find closest match
+     * @return the name and average of the closest average building
+     */
+    private static String[] closestMatch(String[][] matrix,
+            String buildingName) {
+        /*
+         * Values needed for comparisions
+         */
+        String[] match = new String[2];
+        int thisPos = findPos(matrix, buildingName);
+        double thisAverage = getAverage(matrix, thisPos);
+        double closest = Integer.MAX_VALUE;
+        /*
+         * For all buildings check if they are closer to the passed building
+         * name
+         */
+        for (int i = 1; i < matrix[0].length; i++) {
+            if (thisPos != i) {
+                String name = matrix[0][i];
+                double currentAverage = getAverage(matrix, i);
+                double difference = Math.abs(thisAverage - currentAverage);
+                if (difference < closest) {
+                    match[0] = name;
+                    match[1] = "" + currentAverage;
+                    closest = difference;
+                }
+            }
+        }
+        return match;
+    }
+
+    /**
      * Main method.
      *
      * @param args
@@ -230,16 +290,9 @@ public final class Main {
          */
         Queue<String[][]> matrixQueue = populateMatrixQueue(files);
 
-        /*
-         * Prints the averages of all data sets
-         */
-        for (String[][] matrix : matrixQueue) {
-
-            for (int i = 1; i < matrix[0].length; i++) {
-                System.out.println("Average of " + matrix[0][i] + ": "
-                        + String.format("%.2f", getAverage(matrix, i)));
-                System.out.println();
-            }
-        }
+        String[][] matrix = matrixQueue.remove();
+        String testname = "Taylor Tower - Total Energy Consumption (Cleaned) (kBTU)";
+        System.out.println(getAverage(matrix, 16));
+        System.out.println(Arrays.toString(closestMatch(matrix, testname)));
     }
 }
