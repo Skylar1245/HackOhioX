@@ -1,23 +1,21 @@
 function [increase] = MonthDifference(currentMonth)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%MonthDifference finds the percentage change in power over the previous two
+%months for both a Dorm Building and Non-Dorm building.
 
+    % Initialize the return value.
     increase = 0;
 
+    % Extract the tables of data from the .csv file.
     M = readtable('HackOhio/data/Dorm Buildings.csv');
     M2 = readtable('HackOhio/data/Non-Dorm Buildings.csv');
     
-    %buildingNames = ["Busch House", "Taylor Tower", "Smith-Steeb Hall", "Baker Hall", "Morrill Tower"];
-    %buildingNames = ["Knowlton Hall", "North Recreation Center", "Denny Hall", "Thompson Library", "Enarson"];
-    buildingNum = 1;
-    
-    desiredColumn = "BuschHouse_TotalEnergyConsumption_Cleaned__kBTU_";
-    desiredColumn2 = "KnowltonAustinEHall_TotalEnergyConsumption_Cleaned__kBTU_";
-
+    % Store a copt of the input month for referencing and alteration.
     month = currentMonth;
 
+    % Initialize an array to contain the month string array
     monthStr = [];
     
+    %Calculate the monthly averages of the months that are needed.
     monthAverages = zeros(1,2);
     monthAverages2 = zeros(1,2);
     year = string(2022) + "-";
@@ -36,11 +34,16 @@ function [increase] = MonthDifference(currentMonth)
         monthAverages(i) = GetAverage(monthtable,desiredColumn);
         monthAverages2(i) = GetAverage(monthtable2,desiredColumn2);
     end
-    result = monthAverages(2)/monthAverages(1)
-    result2 = monthAverages2(2)/monthAverages2(1)
 
+    % Find the percentage change between the two months.
+    result = monthAverages(2)/monthAverages(1);
+    result2 = monthAverages2(2)/monthAverages2(1);
+
+    % Create a writer to write information to a text file.
     writer = fopen( 'HackOhio/Data/Months.txt', 'w' );
+    % Print the results to a .text file.
     fprintf(writer, '%f\n', result);
     fprintf(writer, '%f', result2);
+    % Close the writer.
     fclose(writer);
 end
