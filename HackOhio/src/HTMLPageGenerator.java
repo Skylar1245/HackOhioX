@@ -38,9 +38,10 @@ public final class HTMLPageGenerator {
             double efficiancy, String buildingTwin) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".html");
 
-        while (fileName.contains("/")) {
-            int slashIndex = fileName.indexOf("/");
-            fileName = fileName.substring(slashIndex + 1);
+        String fname = fileName;
+        while (fname.contains("/")) {
+            int slashIndex = fname.indexOf("/");
+            fname = fname.substring(slashIndex + 1);
         }
 
         out.println("<html lang=\"en\">");
@@ -50,12 +51,10 @@ public final class HTMLPageGenerator {
                 "\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
         out.println("\t<meta name=\"viewport\" content=\"width=devic"
                 + "e-width, initial-scale=1.0\">");
-        out.println(
-                "\t<link rel=\"stylesheet\" href=\"" + fileName + ".css\">");
+        out.println("\t<link rel=\"stylesheet\" href=\"" + fname + ".css\">");
         out.println("\t<link rel=\"stylesheet\" href=\"https://"
                 + "assets.bux.osu.edu/bux-webfonts/bux-webfonts.css\" />");
-        out.println(
-                "\t<title>ENGIE Campus Dashboards: " + fileName + "</title>");
+        out.println("\t<title>ENGIE Campus Dashboards: " + fname + "</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("\t<header>");
@@ -138,7 +137,7 @@ public final class HTMLPageGenerator {
         out.println("\t\t\t</div>");
         out.println("\t\t</div>");
         out.println("\t</div> ");
-        out.println("\t<script src=\"" + fileName + ".js" + "\"></script>");
+        out.println("\t<script src=\"" + fname + ".js" + "\"></script>");
         out.println("</body>");
         out.println("</html>");
         out.close();
@@ -280,7 +279,9 @@ public final class HTMLPageGenerator {
         out.print(
                 "\n//gets an array of all the elements within the class of graphs");
         out.println("\n\nmovingblock = document.getElementsByClass"
-                + "Name('graphs');\n\n//waits until the animation has finished an iteration to switch the image\nmovingblock[0].addEventListener(\"anim"
+                + "Name('graphs');\n\n//waits until the animation has fini"
+                + "shed an iteration to switch the image\nmovingblock[0].add"
+                + "EventListener(\"anim"
                 + "ationiteration\", displayNextImage);");
 
         out.close();

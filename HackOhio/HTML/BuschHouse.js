@@ -10,7 +10,8 @@ function displayNextImage() {
 	}
 }
 
-//gets an array of all the elements within the class og graphs
+//gets an array of all the elements within the class of graphs
+
 movingblock = document.getElementsByClassName('graphs');
 
 //waits until the animation has finished an iteration to switch the image
