@@ -329,10 +329,10 @@ public final class Data {
     /**
      * Main method.
      *
-     * @param args
-     *            the command line arguments
+     * @param count
+     *            reference to which file to read
      */
-    public static void main(String[] args) {
+    public static void main(int count) {
 
         /*
          * Based on provided directory name, gets all valid csv file names
@@ -344,6 +344,8 @@ public final class Data {
          */
         Queue<String[][]> matrixQueue = populateMatrixQueue(files);
 
-        matrix = matrixQueue.remove();
+        for (int i = 0; i < count; i++) {
+            matrix = matrixQueue.remove();
+        }
     }
 }

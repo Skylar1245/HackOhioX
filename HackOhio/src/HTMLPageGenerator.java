@@ -32,19 +32,20 @@ public final class HTMLPageGenerator {
         out.println("\t<meta charset=\"UTF-8\">");
         out.println(
                 "\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
-        out.println(
-                "\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("\t<meta name=\"viewport\" content=\"width=devic"
+                + "e-width, initial-scale=1.0\">");
         out.println(
                 "\t<link rel=\"stylesheet\" href=\"" + fileName + ".css\">");
+        out.println("\t<link rel=\"stylesheet\" href=\"https://"
+                + "assets.bux.osu.edu/bux-webfonts/bux-webfonts.css\" />");
         out.println(
-                "\t<link rel=\"stylesheet\" href=\"https://assets.bux.osu.edu/bux-webfonts/bux-webfonts.css\" />");
-        out.println("\t<title>ENGIE Campus Dashboards</title>");
+                "\t<title>ENGIE Campus Dashboards: " + fileName + "</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("\t<header>");
         out.println("\t\t<h1 class=\"title\"><b>ENGIE Energy Saver</b></h1>");
-        out.println(
-                "\t\t<h2 class=\"subtitle\"><em>Go to ENGIE.com to learn more</em></h2>");
+        out.println("\t\t<h2 class=\"subtitle\"><em>Go to "
+                + "ENGIE.com to learn more</em></h2>");
         out.println("\t</header>");
         out.println("\t<div class=\"info\">");
         out.println("\t\t<div class=\"graph\">");
@@ -60,8 +61,8 @@ public final class HTMLPageGenerator {
         out.println("\t\t\t\t<ul>");
 
         if (dormRank > 0) {
-            out.println(
-                    "\t\t\t\t\t<li>Turn your lights and electronics when they aren't in use!</li>");
+            out.println("\t\t\t\t\t<li>Turn your lights and electronics "
+                    + "when they aren't in use!</li>");
             out.println("\t\t\t\t\t<li>Take shorter showers!</li>");
             out.println("\t\t\t\t\t<li>Turn your refridgerator down!</li>");
             out.println(
@@ -69,14 +70,14 @@ public final class HTMLPageGenerator {
             out.println("\t\t\t\t\t<li>Do full loads of laundry</li>");
             out.println("\t\t\t\t\t<li>Put decorative lights on a timer</li>");
         } else {
-            out.println(
-                    "\t\t\t\t\t<li>Turn your lights and electronics when they aren't in use!</li>");
+            out.println("\t\t\t\t\t<li>Turn your lights and electronics"
+                    + " when they aren't in use!</li>");
             out.println("\t\t\t\t\t<li>Uplug equipment when not in use</li>");
             out.println("\t\t\t\t\t<li>Print only when needed</li>");
             out.println(
                     "\t\t\t\t\t<li>Promote sustanability in the classroom</li>");
-            out.println(
-                    "\t\t\t\t\t<li>Reduce energy usage of small personal appliances</li>");
+            out.println("\t\t\t\t\t<li>Reduce energy usage of small "
+                    + "personal appliances</li>");
         }
 
         out.println("\t\t\t\t</ul>");
@@ -100,17 +101,16 @@ public final class HTMLPageGenerator {
                             + dormRank + "th.</div>");
         }
 
-        out.println(
-                "\t\t\t\t\t<div class=\"hitem\">Do you live energy efficent?</div>");
+        out.println("\t\t\t\t\t<div class=\"hitem\">Do you live "
+                + "energy efficent?</div>");
         out.println(
                 "\t\t\t\t\t<div class=\"hitem\">Remember to recycle.</div>");
 
         if (efficiancy > 0) {
             if (dormRank > 0) {
-                out.println(
-                        "\t\t\t\t\t<div class=\"hitem\">Your dorm this month did "
-                                + efficiancy
-                                + "% better than last month.</div>");
+                out.println("\t\t\t\t\t<div class=\"hitem\">Your dorm"
+                        + " this month did " + efficiancy
+                        + "% better than last month.</div>");
             } else {
                 out.println(
                         "\t\t\t\t\t<div class=\"hitem\">Your building this month did "
@@ -236,8 +236,9 @@ public final class HTMLPageGenerator {
                 "\n\t\tdocument.getElementById('img').src = '" + graph1 + "';");
         out.print("\n\t}");
         out.print("\n}");
-        out.println(
-                "\n\nmovingblock = document.getElementsByClassName('graphs');\nmovingblock[0].addEventListener(\"animationiteration\", displayNextImage);");
+        out.println("\n\nmovingblock = document.getElementsByClass"
+                + "Name('graphs');\nmovingblock[0].addEventListener(\"anim"
+                + "ationiteration\", displayNextImage);");
 
         out.close();
     }
@@ -252,7 +253,7 @@ public final class HTMLPageGenerator {
         /*
          * Strings for the dorm based page.
          */
-        String fileName = "HTML/test";
+        String fileName = "HTML/TaylorTower";
         String graph1URL = "https://raw.githubusercontent.com/Skylar1245/"
                 + "HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/"
                 + "HackOhio/graphs/BuschPlotPerPerson.png";
@@ -263,12 +264,40 @@ public final class HTMLPageGenerator {
         /*
          * Bridge over Data.java to be used here.
          */
-        Data.main(args);
+        Data.main(1);
         String[][] matrix = Data.getMatrix();
-        String thisBuilding = "Taylor Tower - Total Energy Consumption (Cleaned) (kBTU)";
+        String thisBuilding = "Taylor Tower - Total Energy Consumption"
+                + " (Cleaned) (kBTU)";
         String buildingTwin = Data.closestMatch(matrix, thisBuilding);
         int dormRank = Data.dormRank(matrix, thisBuilding);
         double lastMonthComparison = Data.compareToLastMonth(thisBuilding);
+
+        pageMaker(fileName, graph1URL, dormRank, lastMonthComparison,
+                buildingTwin);
+        cssPageMaker(fileName);
+        jsPageMaker(fileName, graph1URL, graph2URL, graph3URL);
+
+        /*
+         * Strings for the dorm based page.
+         */
+        fileName = "HTML/KnowltonHall";
+        graph1URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/"
+                + "HackOhio/graphs/BuschPlotPerPerson.png";
+        graph2URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
+        graph3URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
+        /*
+         * Bridge over Data.java to be used here.
+         */
+        Data.main(2);
+        matrix = Data.getMatrix();
+        thisBuilding = "Knowlton Austin E Hall - Total Energy Consumption"
+                + " (Cleaned) (kBTU)";
+        buildingTwin = Data.closestMatch(matrix, thisBuilding);
+        dormRank = Data.dormRank(matrix, thisBuilding);
+        lastMonthComparison = Data.compareToLastMonth(thisBuilding);
 
         pageMaker(fileName, graph1URL, dormRank, lastMonthComparison,
                 buildingTwin);
