@@ -1,10 +1,10 @@
 function displayNextImage() {
-	if(document.getElementById('img').src =='https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png') {
-		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png';
-	} else if(document.getElementById('img').src =='https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png') {
-		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png';
+	if(document.getElementById('img').src =='https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/KnowltonPlotAnnual.png') {
+		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/KnowltonPlotCategories.png';
+	} else if(document.getElementById('img').src =='https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/KnowltonPlotCategories.png') {
+		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/KnowltonPlotPerPerson.png';
 	} else {
-		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png';
+		document.getElementById('img').src = 'https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/KnowltonPlotAnnual.png';
 	}
 }
 

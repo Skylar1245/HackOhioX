@@ -14,15 +14,13 @@
     margin-top: -20px;
 }
 
-.facts {
-    display: flex;
+display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #ffffff;
     width: 40%;
     height: auto;
-    padding: 20px;    
-}
+    padding: 20px;
 
 .footnote {
     text-align: center;
