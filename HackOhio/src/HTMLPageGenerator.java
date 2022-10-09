@@ -168,6 +168,11 @@ public final class HTMLPageGenerator {
         out.println("What is the name of the output file?");
         String fileName = in.nextLine();
 
+        while (fileName.contains("/")) {
+            int slashIndex = fileName.indexOf("/");
+            fileName = fileName.substring(slashIndex + 1);
+        }
+
         out.println("What is the URL for the first graph");
         String graph1URL = in.nextLine();
 
