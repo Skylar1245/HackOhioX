@@ -79,7 +79,7 @@ public final class HTMLPageGenerator {
             out.println("\t\t\t\t\t<li>Turn your lights and electronics "
                     + "when they aren't in use!</li>");
             out.println("\t\t\t\t\t<li>Take shorter showers!</li>");
-            out.println("\t\t\t\t\t<li>Turn your refridgerator down!</li>");
+            out.println("\t\t\t\t\t<li>Turn your refrigerator down!</li>");
             out.println(
                     "\t\t\t\t\t<li>Turn the sink off when you brush your teeth</li>");
             out.println("\t\t\t\t\t<li>Do full loads of laundry</li>");
@@ -117,7 +117,7 @@ public final class HTMLPageGenerator {
         }
 
         out.println("\t\t\t\t\t<div class=\"hitem\">Do you live "
-                + "energy efficent?</div>");
+                + "energy efficient?</div>");
         out.println(
                 "\t\t\t\t\t<div class=\"hitem\">Remember to recycle.</div>");
 
