@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -244,12 +243,11 @@ public final class Main {
      *            Name of building to find closest match
      * @return the name and average of the closest average building
      */
-    private static String[] closestMatch(String[][] matrix,
-            String buildingName) {
+    private static String closestMatch(String[][] matrix, String buildingName) {
         /*
          * Values needed for comparisions
          */
-        String[] match = new String[2];
+        String match = "";
         int thisPos = findPos(matrix, buildingName);
         double thisAverage = getAverage(matrix, thisPos);
         double closest = Integer.MAX_VALUE;
@@ -263,13 +261,15 @@ public final class Main {
                 double currentAverage = getAverage(matrix, i);
                 double difference = Math.abs(thisAverage - currentAverage);
                 if (difference < closest) {
-                    match[0] = name;
-                    match[1] = "" + currentAverage;
+                    match = name;
                     closest = difference;
                 }
             }
         }
-        return match;
+        /*
+         * Returns the name of the building without extra wording
+         */
+        return match.split(" -")[0];
     }
 
     /**
@@ -292,7 +292,7 @@ public final class Main {
 
         String[][] matrix = matrixQueue.remove();
         String testname = "Taylor Tower - Total Energy Consumption (Cleaned) (kBTU)";
-        System.out.println(getAverage(matrix, 16));
-        System.out.println(Arrays.toString(closestMatch(matrix, testname)));
+        System.out.println(getAverage(matrix, findPos(matrix, testname)));
+        System.out.println(closestMatch(matrix, testname));
     }
 }
