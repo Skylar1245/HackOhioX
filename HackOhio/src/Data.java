@@ -345,8 +345,5 @@ public final class Data {
         Queue<String[][]> matrixQueue = populateMatrixQueue(files);
 
         matrix = matrixQueue.remove();
-        String testname = "Busch House - Total Energy Consumption (Cleaned) (kBTU)";
-        System.out.println(getAverage(matrix, findPos(matrix, testname)));
-        System.out.println(closestMatch(matrix, testname));
     }
 }

@@ -246,8 +246,6 @@ public final class HTMLPageGenerator {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
 
-        //get information
-        out.println("What is the name of the output file?");
         String fileName = "HTML/test";
         String graph1URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png";
         String graph2URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
