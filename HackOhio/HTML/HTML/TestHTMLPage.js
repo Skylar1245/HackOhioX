@@ -1,5 +1,4 @@
 function displayNextImage() {
-    console.log('working')
     if(document.getElementById('img').src == 'https://www.mathsisfun.com/data/images/graph-gen.svg') {
         document.getElementById('img').src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Polynomial_of_degree_three.svg/1200px-Polynomial_of_degree_three.svg.png'
     } else if(document.getElementById('img').src == 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Polynomial_of_degree_three.svg/1200px-Polynomial_of_degree_three.svg.png'){
@@ -11,4 +10,3 @@ function displayNextImage() {
 
 movingblock = document.getElementsByClassName('graphs')
 movingblock[0].addEventListener("animationiteration", displayNextImage);
-
