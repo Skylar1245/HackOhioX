@@ -256,7 +256,7 @@ public final class HTMLPageGenerator {
         /*
          * Strings for the dorm based page.
          */
-        String fileName = "HTML/TaylorTower";
+        String fileName = "HTML/BuschHouse";
         String graph1URL = "https://raw.githubusercontent.com/Skylar1245/"
                 + "HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/"
                 + "HackOhio/graphs/BuschPlotPerPerson.png";
@@ -269,8 +269,8 @@ public final class HTMLPageGenerator {
          */
         Data.main(1);
         String[][] matrix = Data.getMatrix();
-        String thisBuilding = "Taylor Tower - Total Energy Consumption"
-                + " (Cleaned) (kBTU)";
+        String thisBuilding = "Busch House - Total Energy "
+                + "Consumption (Cleaned) (kBTU)";
         String buildingTwin = Data.closestMatch(matrix, thisBuilding);
         int dormRank = Data.dormRank(matrix, thisBuilding);
         double lastMonthComparison = Data.compareToLastMonth(thisBuilding);
