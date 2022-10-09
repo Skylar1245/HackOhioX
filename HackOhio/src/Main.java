@@ -8,13 +8,14 @@ import java.util.Queue;
 import java.util.Scanner;
 
 /**
- * Main file for Energy Dashboard.
+ * Works with HTML files and MATLAB graph outputs to read any amount of files
+ * within a given folder. Assumes that the files are [NAME].csv and is exported
+ * through excels save as .csv with comma delimiter. (No cells include a comma)
  *
  * @author Skylar Stephens
  * @author Kate Goertz
  * @author Manny Jauregui
  * @author Avery Doctor
- *
  */
 public final class Main {
 
@@ -78,13 +79,14 @@ public final class Main {
      */
     private static String[][] createMatrix(List<List<String>> l) {
         /*
-         * for all list elements add a String[] based on the contents
+         * Needed values for simplistic code
          */
         int rows = l.size();
         int columns = l.get(0).size();
-
         String[][] matrix = new String[rows][columns];
-
+        /*
+         * For all rows and columns in l, add to correct Matrix location
+         */
         for (int i = 0; i < columns; i++) {
             for (int k = 0; k < rows; k++) {
                 matrix[k][i] = l.get(k).get(i);
@@ -146,7 +148,6 @@ public final class Main {
         } else {
             average = 0.0;
         }
-
         return average;
     }
 
