@@ -219,6 +219,7 @@ public final class Main {
      *            the command line arguments
      */
     public static void main(String[] args) {
+
         /*
          * Based on provided directory name, gets all valid csv file names
          */
