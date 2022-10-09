@@ -1,5 +1,3 @@
-import components.simplereader.SimpleReader;
-import components.simplereader.SimpleReader1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
@@ -251,13 +249,17 @@ public final class HTMLPageGenerator {
      *            the command line arguments
      */
     public static void main(String[] args) {
-        SimpleReader in = new SimpleReader1L();
-        SimpleWriter out = new SimpleWriter1L();
-
+        /*
+         * Strings for the dorm based page.
+         */
         String fileName = "HTML/test";
-        String graph1URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png";
-        String graph2URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
-        String graph3URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
+        String graph1URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/"
+                + "HackOhio/graphs/BuschPlotPerPerson.png";
+        String graph2URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
+        String graph3URL = "https://raw.githubusercontent.com/Skylar1245/"
+                + "HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
         /*
          * Bridge over Data.java to be used here.
          */
@@ -272,9 +274,5 @@ public final class HTMLPageGenerator {
                 buildingTwin);
         cssPageMaker(fileName);
         jsPageMaker(fileName, graph1URL, graph2URL, graph3URL);
-
-        in.close();
-        out.close();
     }
-
 }
