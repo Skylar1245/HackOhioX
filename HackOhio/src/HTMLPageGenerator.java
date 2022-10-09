@@ -236,7 +236,7 @@ public final class HTMLPageGenerator {
                 + "    0% { transform: translate3d(100%, 0, 0); }\r\n"
                 + "    100% { transform: translate3d(-500%, 0, 0); }\r\n"
                 + "  }");
-        out.println("\n.hmove { animation: tickerh linear 25s infinite; }");
+        out.println("\n.hmove { animation: tickerh linear 40s infinite; }");
         out.println("\n.hmove:hover { animation-play-state: paused; }");
         out.println("\n");
 

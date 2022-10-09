@@ -173,7 +173,7 @@ li {
     100% { transform: translate3d(-500%, 0, 0); }
   }
 
-.hmove { animation: tickerh linear 25s infinite; }
+.hmove { animation: tickerh linear 40s infinite; }
 
 .hmove:hover { animation-play-state: paused; }
 
