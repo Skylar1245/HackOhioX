@@ -97,7 +97,7 @@ public final class HTMLPageGenerator {
 
         if (dormRank > 0) {
             out.println(
-                    "\t\t\t\t\t<div class=\"hitem\">Currently your dorm is in "
+                    "\t\t\t\t\t<div class=\"hitem\">Currently your dorm is in"
                             + dormRank + "th.</div>");
         }
 
@@ -132,15 +132,15 @@ public final class HTMLPageGenerator {
         SimpleWriter out = new SimpleWriter1L(fileName + ".css");
 
         out.println(".title {\r\n" + "    font-size: 60px;\r\n"
-                + "    margin-bottom: 0;\r\n" + "    padding-top: 12px;\r\n"
-                + "    padding-bottom: 0%;\r\n" + "}");
+                + "    margin: 0%;\r\n" + "    padding: 0%;\r\n" + "}");
         out.println("\n.info {\r\n" + "    display: inline-flex;\r\n"
                 + "    flex-direction: row;\r\n" + "    overflow: hidden;\r\n"
                 + "    width: 100%;\r\n" + "    height: 80%;\r\n"
                 + "    margin: 0;  \r\n" + "    margin-top: -20px;\r\n" + "}");
-        out.println("\n.facts {\r\n" + "    background-color: #ffffff;\r\n"
-                + "    width: 40%;\r\n" + "    height: auto;\r\n"
-                + "    padding: 20px;    \r\n" + "}");
+        out.println("\ndisplay: flex;\r\n" + "    flex-direction: column;\r\n"
+                + "    justify-content: space-between;\r\n"
+                + "    background-color: #ffffff;\r\n" + "    width: 40%;\r\n"
+                + "    height: auto;\r\n" + "    padding: 20px;");
         out.println("\n.footnote {\r\n" + "    text-align: center;\r\n" + "}");
         out.println("\n.footnote p {\r\n" + "    display: inline-block;\r\n"
                 + "    color: #d0022b;\r\n" + "    text-align: center;\r\n"
@@ -172,17 +172,19 @@ public final class HTMLPageGenerator {
                 + "    overflow: hidden;\r\n" + "    width: 100%;\r\n"
                 + "    aspect-ratio: 16 / 9;\r\n" + "    margin: 0;\r\n"
                 + "    padding: 0;\r\n" + "}");
-        out.println("\nheader {\r\n" + "    font-weight: bolder;\r\n"
-                + "    width: 100%;\r\n" + "    height: 15%;\r\n"
-                + "    background-color:  #dfe3e5;\r\n"
-                + "    margin: 15px auto;\r\n" + "    padding-bottom: 10px;\r\n"
+        out.println("\nheader {\r\n" + "    display: flex;\r\n"
+                + "    flex-direction: column;\r\n"
+                + "    justify-content: center;\r\n"
+                + "    font-weight: bolder;\r\n" + "    width: 100%;\r\n"
+                + "    height: 15%;\r\n" + "    background-color:  #dfe3e5;\r\n"
+                + "    margin: auto;\r\n" + "    padding-bottom: 10px;\r\n"
                 + "}");
         out.println("\nh1 {\r\n" + "    font-size: 50px;\r\n"
                 + "    font-weight: 600;\r\n" + "    text-align: center;\r\n"
                 + "}");
         out.println("\nli {\r\n" + "    font-size: 40px;\r\n"
                 + "    color: #d0022b;\r\n" + "    list-style-type: square;\r\n"
-                + "    margin-bottom: 4%;\r\n" + "}");
+                + "    margin-bottom: 3%;\r\n" + "}");
         out.println("\n/* (A) FIXED WRAPPER */\r\n" + ".hwrap {\r\n"
                 + "    overflow: hidden; /* HIDE SCROLL BAR */\r\n" + "  }");
         out.println("\n  /* (B) MOVING TICKER WRAPPER */\r\n"
