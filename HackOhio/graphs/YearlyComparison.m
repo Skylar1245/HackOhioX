@@ -3,9 +3,15 @@ clc; % clears console
 close all; % close all open figures
 format long;
 
-M = readtable('HackOhio/data/Dorm Buildings.csv');
+%M = readtable('HackOhio/data/Dorm Buildings.csv');
+M = readtable('HackOhio/data/Non-Dorm Buildings.csv');
 
-desiredColumn = "BuschHouse_TotalEnergyConsumption_Cleaned__kBTU_";
+%buildingNames = [ "Busch House", "Taylor Tower", "Smith-Steeb Hall", "Baker Hall", "Morrill Tower"];
+buildingNames = ["Knowlton Hall", "North Recreation Center", "Denny Hall", "Thompson Library", "Enarson"];
+buildingNum = 1;
+
+%desiredColumn = "BuschHouse_TotalEnergyConsumption_Cleaned__kBTU_";
+desiredColumn = "KnowltonAustinEHall_TotalEnergyConsumption_Cleaned__kBTU_";
 
 years=[];
 yearAverages = zeros(1,6);
@@ -28,7 +34,8 @@ b.CData = clr;
 xlabel("Year");
 ylabel("Total Annual Energy Usage (GWh)");
 set(gca,'xticklabel', years);
-title("Average Annual Busch House Energy Usage");
+title("Average Annual " + buildingNames(buildingNum) + " Energy Usage");
 
-print('graphs/BuschPlotAnnual','-dpng');
+%print('graphs/BuschPlotAnnual','-dpng');
 
+print('KnowltonPlotAnnual','-dpng');
