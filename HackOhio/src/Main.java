@@ -210,10 +210,6 @@ public final class Main {
      */
     public static void main(String[] args) {
         /*
-         * Time tracker
-         */
-        long start = System.currentTimeMillis();
-        /*
          * Based on provided directory name, gets all valid csv file names
          */
         File dir = new File("data");
@@ -234,11 +230,5 @@ public final class Main {
                 System.out.println();
             }
         }
-        /*
-         * time tracking
-         */
-        long finish = System.currentTimeMillis();
-        long timeElapsed = finish - start;
-        System.out.println("Ran in: " + Math.floor(timeElapsed) + " seconds");
     }
 }
