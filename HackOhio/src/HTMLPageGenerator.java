@@ -260,7 +260,9 @@ public final class HTMLPageGenerator {
             String graph2, String graph3) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".js");
 
-        out.print("function displayNextImage() {");
+        out.print("//changes the image on the scroll block");
+        out.print("\nfunction displayNextImage() {");
+        out.print("\n\t//check which image is currently displayed")
         out.print("\n\tif(document.getElementById('img').src =='" + graph1
                 + "') {");
         out.print(
@@ -273,9 +275,10 @@ public final class HTMLPageGenerator {
         out.print(
                 "\n\t\tdocument.getElementById('img').src = '" + graph1 + "';");
         out.print("\n\t}");
-        out.print("\n}");
+        out.print("\n}\n");
+        out.print("\n//gets an array of all the elements within the class of graphs");
         out.println("\n\nmovingblock = document.getElementsByClass"
-                + "Name('graphs');\nmovingblock[0].addEventListener(\"anim"
+                + "Name('graphs');\n\n//waits until the animation has finished an iteration to switch the image\nmovingblock[0].addEventListener(\"anim"
                 + "ationiteration\", displayNextImage);");
 
         out.close();
