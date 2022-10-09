@@ -89,12 +89,13 @@ public final class HTMLPageGenerator {
         out.println("\t\t<div class=\"scroll-animation\">");
         out.println("\t\t\t<div class=\"hwrap\">");
         out.println("\t\t\t\t<div class=\"hmove\">");
-        out.println("\t\t\t\t\t<div class=\"hitem\">Your building twin is"
+        out.println("\t\t\t\t\t<div class=\"hitem\">Your building twin is "
                 + buildingTwin + "</div>");
 
         if (dormRank > 0) {
-            out.println("\t\t\t\t\t<div class=\"hitem\">Currently your dorm is"
-                    + dormRank + "number.</div>");
+            out.println(
+                    "\t\t\t\t\t<div class=\"hitem\">Currently your dorm is in"
+                            + dormRank + "th.</div>");
         }
 
         out.println(
@@ -248,16 +249,19 @@ public final class HTMLPageGenerator {
         //get information
         out.println("What is the name of the output file?");
         String fileName = in.nextLine();
-
-        out.println("What is the URL for the first graph");
-        String graph1URL = in.nextLine();
-
-        out.println("What is the URL for the second graph");
-        String graph2URL = in.nextLine();
-
-        out.println("What is the URL for the third graph");
-        String graph3URL = in.nextLine();
-
+        /*
+         * out.println("What is the URL for the first graph"); String graph1URL
+         * = in.nextLine();
+         *
+         * out.println("What is the URL for the second graph"); String graph2URL
+         * = in.nextLine();
+         *
+         * out.println("What is the URL for the third graph"); String graph3URL
+         * = in.nextLine();
+         */
+        String graph1URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png";
+        String graph2URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
+        String graph3URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
         /*
          * Bridge over Data.java to be used here.
          */
