@@ -137,10 +137,11 @@ public final class HTMLPageGenerator {
                 + "    flex-direction: row;\r\n" + "    overflow: hidden;\r\n"
                 + "    width: 100%;\r\n" + "    height: 80%;\r\n"
                 + "    margin: 0;  \r\n" + "    margin-top: -20px;\r\n" + "}");
-        out.println("\ndisplay: flex;\r\n" + "    flex-direction: column;\r\n"
+        out.println("\n.facts { \r\n" + "    display: flex;\r\n"
+                + "    flex-direction: column;\r\n"
                 + "    justify-content: space-between;\r\n"
                 + "    background-color: #ffffff;\r\n" + "    width: 40%;\r\n"
-                + "    height: auto;\r\n" + "    padding: 20px;");
+                + "    height: auto;\r\n" + "    padding: 20px;\r\n" + "}");
         out.println("\n.footnote {\r\n" + "    text-align: center;\r\n" + "}");
         out.println("\n.footnote p {\r\n" + "    display: inline-block;\r\n"
                 + "    color: #d0022b;\r\n" + "    text-align: center;\r\n"
