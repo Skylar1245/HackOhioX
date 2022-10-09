@@ -2,10 +2,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
+
+import components.map.Map.Pair;
+import components.map.Map1L;
 
 /**
  * Works with HTML files and MATLAB graph outputs to read any amount of files
@@ -19,13 +23,6 @@ import java.util.Scanner;
  * @author Avery Doctor
  */
 public final class Data {
-
-    /**
-     * Private constructor so this utility class cannot be instantiated.
-     */
-    private Data() {
-    }
-
     /**
      * Points to folder that contains proper .csv files.
      */
@@ -247,7 +244,7 @@ public final class Data {
      *            Name of building to find closest match
      * @return the name and average of the closest average building
      */
-    private static String closestMatch(String[][] matrix, String buildingName) {
+    public static String closestMatch(String[][] matrix, String buildingName) {
         /*
          * Values needed for comparisions
          */
@@ -274,6 +271,59 @@ public final class Data {
          * Returns the name of the building without extra wording
          */
         return match.split(" -")[0];
+    }
+
+    /**
+     * Gets this buildings rank amoung dorms.
+     *
+     * @param matrix
+     *            matrix of data
+     * @param buildingName
+     *            this building name
+     * @return the rank if its a dorm
+     * @convention -1 means this building is not a dorm
+     */
+    public static int dormRank(String[][] matrix, String buildingName) {
+        int rank = -1;
+        Map1L<String, Double> m = new Map1L<>();
+        for (int i = 1; i < matrix[0].length; i++) {
+            m.add(matrix[0][i],
+                    getAverage(matrix, findPos(matrix, buildingName)));
+        }
+        double[] d = new double[matrix[0].length - 1];
+        int t = 0;
+        for (Pair<String, Double> p : m) {
+            d[t] = p.value();
+        }
+        Arrays.sort(d);
+        for (int c = 0; c < d.length; c++) {
+            if (d[c] == m.value(buildingName)) {
+                rank = c;
+            }
+        }
+        return rank;
+    }
+
+    /**
+     * Reads a data comparison from a MATLAB made file.
+     *
+     * @param buildingName
+     *            the name of the building to compare
+     * @return the differnce
+     */
+    public static int compareToLastMonth(String buildingName) {
+        int efficiency = 0;
+        //this is mannys job
+        return efficiency;
+    }
+
+    /**
+     * Accessor method for this.matrix, meant for use in HTMLPageGenerator.java.
+     *
+     * @return this.matrix
+     */
+    public static String[][] getMatrix() {
+        return matrix;
     }
 
     /**

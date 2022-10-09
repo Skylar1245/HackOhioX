@@ -242,12 +242,8 @@ public final class HTMLPageGenerator {
      *            the command line arguments
      */
     public static void main(String[] args) {
-        //define varibles
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        int dormRank = -1;
-        double efficiancy = 0;
-        String buildingTwin = "";
 
         //get information
         out.println("What is the name of the output file?");
@@ -263,14 +259,20 @@ public final class HTMLPageGenerator {
         String graph3URL = in.nextLine();
 
         /*
-         * Put your main program code here; it may call myMethod as shown
+         * Bridge over Data.java to be used here.
          */
-        pageMaker(fileName, graph1URL, dormRank, efficiancy, buildingTwin);
+        Data.main(args);
+        String[][] matrix = Data.getMatrix();
+        String thisBuilding = "Taylor Tower - Total Energy Consumption (Cleaned) (kBTU)";
+        String buildingTwin = Data.closestMatch(matrix, thisBuilding);
+        int dormRank = Data.dormRank(matrix, thisBuilding);
+        double lastMonthComparison = Data.compareToLastMonth(thisBuilding);
+
+        pageMaker(fileName, graph1URL, dormRank, lastMonthComparison,
+                buildingTwin);
         cssPageMaker(fileName);
         jsPageMaker(fileName, graph1URL, graph2URL, graph3URL);
-        /*
-         * Close input and output streams
-         */
+
         in.close();
         out.close();
     }
