@@ -98,7 +98,7 @@ public final class HTMLPageGenerator {
 
         if (dormRank > 0) {
             out.println(
-                    "\t\t\t\t\t<div class=\"hitem\">Currently your dorm is in"
+                    "\t\t\t\t\t<div class=\"hitem\">Currently your dorm is in "
                             + dormRank + "th.</div>");
         }
 
