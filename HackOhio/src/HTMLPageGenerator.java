@@ -248,17 +248,7 @@ public final class HTMLPageGenerator {
 
         //get information
         out.println("What is the name of the output file?");
-        String fileName = in.nextLine();
-        /*
-         * out.println("What is the URL for the first graph"); String graph1URL
-         * = in.nextLine();
-         *
-         * out.println("What is the URL for the second graph"); String graph2URL
-         * = in.nextLine();
-         *
-         * out.println("What is the URL for the third graph"); String graph3URL
-         * = in.nextLine();
-         */
+        String fileName = "HTML/test";
         String graph1URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/4dc36a2c0a5c4e76943068692cc3234da969e14b/HackOhio/graphs/BuschPlotPerPerson.png";
         String graph2URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotAnnual.png";
         String graph3URL = "https://raw.githubusercontent.com/Skylar1245/HackOhioX/master/HackOhio/graphs/BuschPlotCategories.png";
