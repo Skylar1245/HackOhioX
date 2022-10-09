@@ -311,10 +311,20 @@ public final class Data {
      *            the name of the building to compare
      * @return the differnce
      */
-    public static int compareToLastMonth(String buildingName) {
-        int efficiency = 0;
-        //this is mannys job
-        return efficiency;
+    public static String compareToLastMonth(String buildingName) {
+        String efficiency = "0";
+        try {
+            Scanner scanner = new Scanner(new File("data/Months.txt"));
+            if (buildingName.contains("Busch")) {
+                efficiency = scanner.nextLine();
+            } else {
+                efficiency = scanner.nextLine();
+                efficiency = scanner.nextLine();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return efficiency.substring(0, 5);
     }
 
     /**

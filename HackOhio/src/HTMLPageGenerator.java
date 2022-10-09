@@ -35,7 +35,7 @@ public final class HTMLPageGenerator {
      *            energy usage
      */
     private static void pageMaker(String fileName, String graph1, int dormRank,
-            double efficiancy, String buildingTwin) {
+            String efficiancy, String buildingTwin) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".html");
 
         String fname = fileName;
@@ -121,7 +121,7 @@ public final class HTMLPageGenerator {
         out.println(
                 "\t\t\t\t\t<div class=\"hitem\">Remember to recycle.</div>");
 
-        if (efficiancy > 0) {
+        if (efficiancy.length() > 0) {
             if (dormRank > 0) {
                 out.println("\t\t\t\t\t<div class=\"hitem\">Your dorm"
                         + " this month did " + efficiancy
@@ -314,7 +314,7 @@ public final class HTMLPageGenerator {
                 + "Consumption (Cleaned) (kBTU)";
         String buildingTwin = Data.closestMatch(matrix, thisBuilding);
         int dormRank = Data.dormRank(matrix, thisBuilding);
-        double lastMonthComparison = Data.compareToLastMonth(thisBuilding);
+        String lastMonthComparison = Data.compareToLastMonth(thisBuilding);
 
         pageMaker(fileName, graph1URL, dormRank, lastMonthComparison,
                 buildingTwin);
