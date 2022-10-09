@@ -2,11 +2,12 @@ import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
 /**
- * Put a short phrase describing the program here.
+ * Creates HTML pages based on given data sets.
  *
  * @author Skylar Stephens
  * @author Kate Goertz
  * @author Avery Doctor
+ * @author Manny Jauregui
  *
  */
 public final class HTMLPageGenerator {
@@ -18,7 +19,7 @@ public final class HTMLPageGenerator {
     }
 
     /**
-     * Creates an html page with a linked .css and .js file
+     * Creates an html page with a linked .css and .js file.
      *
      * @param fileName
      *            String containing the absolute path of the file without and
@@ -144,7 +145,7 @@ public final class HTMLPageGenerator {
     }
 
     /**
-     * Creates a css page
+     * Creates a css page.
      *
      * @param fileName
      *            String containing the absolute path of the file without and
@@ -244,7 +245,7 @@ public final class HTMLPageGenerator {
     }
 
     /**
-     * Creates a javascript page
+     * Creates a javascript page.
      *
      * @param fileName
      *            String containing the absolute path of the file without and
