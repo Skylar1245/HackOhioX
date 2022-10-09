@@ -339,7 +339,7 @@ public final class HTMLPageGenerator {
         thisBuilding = "Knowlton Austin E Hall - Total Energy Consumption"
                 + " (Cleaned) (kBTU)";
         buildingTwin = Data.closestMatch(matrix, thisBuilding);
-        dormRank = Data.dormRank(matrix, thisBuilding);
+        dormRank = -1;
         lastMonthComparison = Data.compareToLastMonth(thisBuilding);
 
         pageMaker(fileName, graph1URL, dormRank, lastMonthComparison,

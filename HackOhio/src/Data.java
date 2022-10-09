@@ -285,20 +285,32 @@ public final class Data {
      */
     public static int dormRank(String[][] matrix, String buildingName) {
         int rank = -1;
-        Map1L<String, Double> m = new Map1L<>();
-        for (int i = 1; i < matrix[0].length; i++) {
-            m.add(matrix[0][i],
-                    getAverage(matrix, findPos(matrix, buildingName)));
+        /*
+         * Find if this building is a dorm or not
+         */
+        boolean isDorm = false;
+        for (String s : matrix[0]) {
+            if (s.equals(buildingName)) {
+                isDorm = true;
+            }
         }
-        double[] d = new double[matrix[0].length - 1];
-        int t = 0;
-        for (Pair<String, Double> p : m) {
-            d[t] = p.value();
-        }
-        Arrays.sort(d);
-        for (int c = 0; c < d.length; c++) {
-            if (d[c] == m.value(buildingName)) {
-                rank = c;
+
+        if (isDorm) {
+            Map1L<String, Double> m = new Map1L<>();
+            for (int i = 1; i < matrix[0].length; i++) {
+                m.add(matrix[0][i],
+                        getAverage(matrix, findPos(matrix, buildingName)));
+            }
+            double[] d = new double[matrix[0].length - 1];
+            int t = 0;
+            for (Pair<String, Double> p : m) {
+                d[t] = p.value();
+            }
+            Arrays.sort(d);
+            for (int c = 0; c < d.length; c++) {
+                if (d[c] == m.value(buildingName)) {
+                    rank = c;
+                }
             }
         }
         return rank;
