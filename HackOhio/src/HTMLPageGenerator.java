@@ -21,7 +21,7 @@ public final class HTMLPageGenerator {
      * Put a short phrase describing the static method myMethod here.
      */
     private static void pageMaker(String fileName, String graph1, int dormRank,
-            double efficiancy) {
+            double efficiancy, String buildingTwin) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".html");
 
         while (fileName.contains("/")) {
@@ -89,8 +89,8 @@ public final class HTMLPageGenerator {
         out.println("\t\t<div class=\"scroll-animation\">");
         out.println("\t\t\t<div class=\"hwrap\">");
         out.println("\t\t\t\t<div class=\"hmove\">");
-        out.println(
-                "\t\t\t\t\t<div class=\"hitem\">You saved enough energy to power a car.</div>");
+        out.println("\t\t\t\t\t<div class=\"hitem\">Your building twin is"
+                + buildingTwin + "</div>");
 
         if (dormRank > 0) {
             out.println("\t\t\t\t\t<div class=\"hitem\">Currently your dorm is"
@@ -247,6 +247,7 @@ public final class HTMLPageGenerator {
         SimpleWriter out = new SimpleWriter1L();
         int dormRank = -1;
         double efficiancy = 0;
+        String buildingTwin = "";
 
         //get information
         out.println("What is the name of the output file?");
@@ -264,7 +265,7 @@ public final class HTMLPageGenerator {
         /*
          * Put your main program code here; it may call myMethod as shown
          */
-        pageMaker(fileName, graph1URL, dormRank, efficiancy);
+        pageMaker(fileName, graph1URL, dormRank, efficiancy, buildingTwin);
         cssPageMaker(fileName);
         jsPageMaker(fileName, graph1URL, graph2URL, graph3URL);
         /*
