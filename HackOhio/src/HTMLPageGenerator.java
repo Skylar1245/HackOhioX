@@ -174,11 +174,6 @@ public final class HTMLPageGenerator {
         out.println("What is the name of the output file?");
         String fileName = in.nextLine();
 
-        while (fileName.contains("/")) {
-            int slashIndex = fileName.indexOf("/");
-            fileName = fileName.substring(slashIndex + 1);
-        }
-
         out.println("What is the URL for the first graph");
         String graph1URL = in.nextLine();
 
@@ -192,12 +187,6 @@ public final class HTMLPageGenerator {
          * Put your main program code here; it may call myMethod as shown
          */
         pageMaker(fileName, graph1URL, dormRank, efficiancy);
-
-        while (fileName.contains("/")) {
-            int slashIndex = fileName.indexOf("/");
-            fileName = fileName.substring(slashIndex + 1);
-        }
-
         cssPageMaker(fileName);
         jsPageMaker(fileName, graph1URL, graph2URL, graph3URL);
         /*
