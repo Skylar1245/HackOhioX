@@ -18,12 +18,12 @@ import java.util.Scanner;
  * @author Manny Jauregui
  * @author Avery Doctor
  */
-public final class Main {
+public final class Data {
 
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private Main() {
+    private Data() {
     }
 
     /**
@@ -34,6 +34,10 @@ public final class Main {
      * The chosen delimiter string in the .csv files.
      */
     private static String delimiter = ",";
+    /**
+     * The data holder.
+     */
+    private static String[][] matrix;
 
     /**
      * Gets data given a line.
@@ -290,7 +294,7 @@ public final class Main {
          */
         Queue<String[][]> matrixQueue = populateMatrixQueue(files);
 
-        String[][] matrix = matrixQueue.remove();
+        matrix = matrixQueue.remove();
         String testname = "Taylor Tower - Total Energy Consumption (Cleaned) (kBTU)";
         System.out.println(getAverage(matrix, findPos(matrix, testname)));
         System.out.println(closestMatch(matrix, testname));
