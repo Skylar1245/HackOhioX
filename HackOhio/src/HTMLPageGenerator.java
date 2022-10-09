@@ -4,7 +4,9 @@ import components.simplewriter.SimpleWriter1L;
 /**
  * Put a short phrase describing the program here.
  *
- * @author Put your name here
+ * @author Skylar Stephens
+ * @author Kate Goertz
+ * @author Avery Doctor
  *
  */
 public final class HTMLPageGenerator {
@@ -16,7 +18,20 @@ public final class HTMLPageGenerator {
     }
 
     /**
-     * Put a short phrase describing the static method myMethod here.
+     * Creates an html page with a linked .css and .js file
+     *
+     * @param fileName
+     *            String containing the absolute path of the file without and
+     *            extension
+     * @param graph1
+     *            String containing the URL for the first graph to be shown
+     * @param dormRank
+     *            The rank of the dorm in energy efficiancy
+     * @param efficiancy
+     *            Percentage of energy saved from last month
+     * @param buildingTwin
+     *            String representing the name of the dorm with the closest
+     *            energy usage
      */
     private static void pageMaker(String fileName, String graph1, int dormRank,
             double efficiancy, String buildingTwin) {
@@ -128,6 +143,13 @@ public final class HTMLPageGenerator {
         out.close();
     }
 
+    /**
+     * Creates a css page
+     *
+     * @param fileName
+     *            String containing the absolute path of the file without and
+     *            extension
+     */
     private static void cssPageMaker(String fileName) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".css");
 
@@ -221,6 +243,19 @@ public final class HTMLPageGenerator {
         out.close();
     }
 
+    /**
+     * Creates a javascript page
+     *
+     * @param fileName
+     *            String containing the absolute path of the file without and
+     *            extension
+     * @param graph1
+     *            String containing the URL for the first graph to be shown
+     * @param graph2
+     *            String containing the URL for the second graph to be shown
+     * @param graph3
+     *            String containing the URL for the third graph to be shown
+     */
     private static void jsPageMaker(String fileName, String graph1,
             String graph2, String graph3) {
         SimpleWriter out = new SimpleWriter1L(fileName + ".js");
